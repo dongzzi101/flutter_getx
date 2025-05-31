@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/controller/main_controller.dart';
 import 'package:get/get.dart';
@@ -14,8 +15,18 @@ class MainView extends GetView<MainController> {
         title: Obx(() => Text(controller.title.value)),
       ),
       body: SafeArea(
-        child: Obx(
-          () => RouteInfo.naveBarPage[controller.navBarIdx.value],
+        child: PageTransitionSwitcher(
+          transitionBuilder: (Widget child, Animation<double> anim,
+              Animation<double> secondAnim) {
+            return FadeThroughTransition(
+              animation: anim,
+              secondaryAnimation: secondAnim,
+              child: child,
+            );
+          },
+          child: Obx(
+            () => RouteInfo.naveBarPage[controller.navBarIdx.value],
+          ),
         ),
       ),
       bottomNavigationBar: Obx(
