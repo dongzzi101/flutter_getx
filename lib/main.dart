@@ -24,8 +24,16 @@ class MyApp extends StatelessWidget {
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
       themeMode: ThemeMode.system,
-      theme: ThemeData(colorScheme: MaterialTheme.lightScheme(), useMaterial3: true),
-      darkTheme: ThemeData(colorScheme: MaterialTheme.darkScheme(), useMaterial3: true),
+      theme: ThemeData(
+        colorScheme: MaterialTheme.lightScheme(),
+        useMaterial3: true,
+        fontFamily: 'NanumMyeongio',
+      ),
+      darkTheme: ThemeData(
+        colorScheme: MaterialTheme.darkScheme(),
+        useMaterial3: true,
+        fontFamily: 'NanumMyeongio',
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
