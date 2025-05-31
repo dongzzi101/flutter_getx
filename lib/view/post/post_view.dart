@@ -25,13 +25,18 @@ class PostView extends GetView<PostController> {
     return ListView.separated(
       itemCount: controller.posts.length,
       itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          leading: const Icon(Icons.article_outlined),
-          title: Text(
-            controller.posts[index].title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+        return InkWell(
+          child: ListTile(
+            leading: const Icon(Icons.article_outlined),
+            title: Text(
+              controller.posts[index].title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
+          onTap: (){
+            controller.toPostDetail(controller.posts[index].id);
+          },
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),

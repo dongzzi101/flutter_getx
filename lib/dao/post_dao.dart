@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
 class PostDao extends GetConnect {
-
   static PostDao get to => Get.put(PostDao());
 
   @override
@@ -44,6 +43,28 @@ class PostDao extends GetConnect {
 
     resultMap['code'] = code;
     resultMap['list'] = list;
+
+    return resultMap;
+  }
+
+  Future<Map<String, dynamic>> getPost(int id) async {
+    Map<String, dynamic> resultMap = <String, dynamic>{};
+    CodeInfo code = CodeInfo.ok;
+    PostBean bean = PostBean();
+
+    try {
+      final Response res = await get("/posts/$id");
+      if (res.statusCode == HttpStatus.ok) {
+        bean = PostBean.fromJson(res.body);
+      } else {
+        code = CodeInfo.err;
+      }
+    } catch (e) {
+      code = CodeInfo.err;
+    }
+
+    resultMap['code'] = code;
+    resultMap['bean'] = bean;
 
     return resultMap;
   }
