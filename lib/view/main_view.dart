@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/controller/main_controller.dart';
 import 'package:get/get.dart';
+
+import '../route/route_info.dart';
 
 class MainView extends GetView<MainController> {
   const MainView({super.key});
@@ -12,8 +13,30 @@ class MainView extends GetView<MainController> {
       appBar: AppBar(
         title: Obx(() => Text(controller.title.value)),
       ),
-      body: const SafeArea(
-        child: SizedBox(),
+      body: SafeArea(
+        child: Obx(
+          () => RouteInfo.naveBarPage[controller.navBarIdx.value],
+        ),
+      ),
+      bottomNavigationBar: Obx(
+        () => NavigationBar(
+          selectedIndex: controller.navBarIdx.value,
+          onDestinationSelected: controller.onChangeNavBar,
+          destinations: [
+            NavigationDestination(
+              icon: Icon(Icons.home),
+              label: 'navBar.home'.tr,
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.list_alt),
+              label: 'navBar.post'.tr,
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.photo),
+              label: 'navBar.photo'.tr,
+            ),
+          ],
+        ),
       ),
     );
   }
