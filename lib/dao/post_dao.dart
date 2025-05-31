@@ -8,6 +8,9 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
 class PostDao extends GetConnect {
+
+  static PostDao get to => Get.put(PostDao());
+
   @override
   void onInit() {
     super.onInit();
