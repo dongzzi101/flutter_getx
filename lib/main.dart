@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/bind/init_bind.dart';
+import 'package:flutter_getx/common/theme.dart';
 import 'package:flutter_getx/common/translations_info.dart';
 import 'package:flutter_getx/route/route_info.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
       translations: TranslationsInfo(),
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
+      themeMode: ThemeMode.system,
+      theme: ThemeData(colorScheme: MaterialTheme.lightScheme(), useMaterial3: true),
+      darkTheme: ThemeData(colorScheme: MaterialTheme.darkScheme(), useMaterial3: true),
       debugShowCheckedModeBanner: false,
     );
   }
