@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/component/drawer_widget.dart';
 import 'package:flutter_getx/controller/main_controller.dart';
 import 'package:get/get.dart';
 
@@ -29,6 +30,7 @@ class MainView extends GetView<MainController> {
           ),
         ),
       ),
+      drawer: DrawerWidget(),
       bottomNavigationBar: Obx(
         () => NavigationBar(
           selectedIndex: controller.navBarIdx.value,
