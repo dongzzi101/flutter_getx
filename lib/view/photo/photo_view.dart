@@ -38,14 +38,19 @@ class PhotoView extends GetView<PhotoController> {
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemCount: controller.photos.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
-                controller.photos[index].downloadUrl,
-                fit: BoxFit.cover,
+          return InkWell(
+            child: Card(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  controller.photos[index].downloadUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
+            onTap: (){
+              controller.showPhoto(index);
+            },
           );
         },
       ),
