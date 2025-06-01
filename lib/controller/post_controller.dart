@@ -17,6 +17,10 @@ class PostController extends GetxController {
     _getPosts();
   }
 
+  void onRefresh(){
+    _getPosts();
+  }
+
   Future<void> _getPosts() async {
     isLoading(true);
 

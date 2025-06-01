@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx/component/loading_widget.dart';
 import 'package:flutter_getx/controller/post_controller.dart';
 import 'package:get/get.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class PostView extends GetView<PostController> {
   const PostView({super.key});
@@ -22,24 +23,33 @@ class PostView extends GetView<PostController> {
   }
 
   Widget _post() {
-    return ListView.separated(
-      itemCount: controller.posts.length,
-      itemBuilder: (BuildContext context, int index) {
-        return InkWell(
-          child: ListTile(
-            leading: const Icon(Icons.article_outlined),
-            title: Text(
-              controller.posts[index].title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          onTap: (){
-            controller.toPostDetail(controller.posts[index].id);
-          },
-        );
+    return LiquidPullToRefresh(
+      color: Colors.grey.withOpacity(0.2),
+      backgroundColor: Colors.white,
+      showChildOpacityTransition: false,
+      springAnimationDurationInMilliseconds: 300,
+      onRefresh: () async {
+        controller.onRefresh();
       },
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      child: ListView.separated(
+        itemCount: controller.posts.length,
+        itemBuilder: (BuildContext context, int index) {
+          return InkWell(
+            child: ListTile(
+              leading: const Icon(Icons.article_outlined),
+              title: Text(
+                controller.posts[index].title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            onTap: () {
+              controller.toPostDetail(controller.posts[index].id);
+            },
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      ),
     );
   }
 }
