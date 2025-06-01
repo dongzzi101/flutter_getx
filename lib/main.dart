@@ -5,6 +5,8 @@ import 'package:flutter_getx/common/translations_info.dart';
 import 'package:flutter_getx/route/route_info.dart';
 import 'package:get/get.dart';
 
+import 'common/const.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -27,12 +29,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: MaterialTheme.lightScheme(),
         useMaterial3: true,
-        fontFamily: 'NanumMyeongio',
+        fontFamily: gFont,
       ),
       darkTheme: ThemeData(
         colorScheme: MaterialTheme.darkScheme(),
         useMaterial3: true,
-        fontFamily: 'NanumMyeongio',
+        fontFamily: gFont,
       ),
       debugShowCheckedModeBanner: false,
     );

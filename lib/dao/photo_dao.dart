@@ -7,6 +7,8 @@ import 'package:flutter_getx/dto/photo_bean.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
+import '../common/const.dart';
+
 class PhotoDao extends GetConnect {
   static PhotoDao get to => Get.put(PhotoDao());
 
@@ -15,10 +17,9 @@ class PhotoDao extends GetConnect {
     super.onInit();
 
     httpClient.baseUrl = ApiInfo.rootPhotoUrl;
-    httpClient.defaultContentType = 'application/x-www-form-urlencoded';
+    httpClient.defaultContentType = gHttpContentType;
     httpClient.addRequestModifier((Request request) {
-      request.headers['Accept'] = 'application/json';
-
+      request.headers[gHttpHeaderAccept] = gHttpHeaderAcceptJson;
       return request;
     });
   }

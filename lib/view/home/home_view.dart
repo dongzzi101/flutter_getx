@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/common/const.dart';
 import 'package:flutter_getx/component/loading_widget.dart';
 import 'package:flutter_getx/controller/home_controller.dart';
 import 'package:get/get.dart';
@@ -16,9 +17,9 @@ class HomeView extends GetView<HomeController> {
             Column(
               children: [
                 Card(
-                  margin: const EdgeInsets.all(16.0),
+                  margin: const EdgeInsets.all(gMargin),
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(gMargin),
                     child: Row(
                       children: [
                         Image.asset('assets/img/flutter.png', width: 24.0),
@@ -29,7 +30,7 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 Card(
-                  margin: const EdgeInsets.all(16.0),
+                  margin: const EdgeInsets.all(gMargin),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: SizedBox(

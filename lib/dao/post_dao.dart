@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_getx/api/api_info.dart';
 import 'package:flutter_getx/common/code_info.dart';
+import 'package:flutter_getx/common/const.dart';
 import 'package:flutter_getx/dto/post_bean.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
@@ -14,9 +15,9 @@ class PostDao extends GetConnect {
     super.onInit();
 
     httpClient.baseUrl = ApiInfo.rootPostUrl;
-    httpClient.defaultContentType = 'application/x-www-form-urlencoded';
+    httpClient.defaultContentType = gHttpContentType;
     httpClient.addRequestModifier((Request request) {
-      request.headers['Accept'] = 'application/json';
+      request.headers[gHttpHeaderAccept] = gHttpHeaderAcceptJson;
       return request;
     });
   }
